@@ -1,0 +1,49 @@
+﻿@model MODEL.Project
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Project Details</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddEdit", new { id = 0 },new { @class = "btn btn-primary" })
+    @Html.HiddenFor(m=> m.ProjectId)
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganizationName)
+        </th>
+       
+        <th style="padding-left:75px">Action</th>
+    </tr>
+
+    @foreach (var item in Model.ProjectList)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrganizationName)
+            </td>
+            
+            <td>
+                @Html.ActionLink("Edit", "AddEdit", new { id = item.ProjectId }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ProjectId }, new { @class = "btn btn-secondary" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProjectId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

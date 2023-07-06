@@ -1,0 +1,59 @@
+﻿@model MODEL.Organization
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Organization</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddEdit", new { id = 0 }, new {@class="btn btn-primary"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganizationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganizationDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganizationAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganizationPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrganizationContactPerson)
+        </th>
+     
+        <th>Action</th>
+    </tr>
+
+@foreach (var item in Model.OrganizationList) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrganizationName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrganizationDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrganizationAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrganizationPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrganizationContactPerson)
+        </td>
+      
+        <td>
+            @Html.ActionLink("Edit", "AddEdit", new { id = item.OrganizationId }, new { @class = "btn btn-primary small-button" })
+            @Html.ActionLink("Details", "Details", new { id = item.OrganizationId }, new { @class = "btn btn-secondary small-button" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.OrganizationId }, new { @class = "btn btn-danger small-button" })
+        </td>
+    </tr>
+}
+
+</table>
